@@ -13,13 +13,18 @@ import os
 
 TIMEOUT = 2
 
+config_path = '.'
+try:
+    os.chroot(config_path)
+    os.chdir('/')
+except:
+    print('Unable to chroot. Run as root for extra security.')
+
 
 def application(env, start_response):
     """
     This is where uwsgi calls us.
     """
-    config_path = '.'
-
     def awesome():
         start_response('200', [])
 
@@ -30,6 +35,7 @@ def application(env, start_response):
 
     # These are the "endpoints" (/healthcheck/thing) that we respond on.
     local_endpoints = os.listdir(config_path)
+    print(os.listdir(config_path)) #FIXME
 
     if path in local_endpoints:
         # These are the endpoints that we check to determine if we return
@@ -37,7 +43,9 @@ def application(env, start_response):
         for url_file in os.listdir(path):
             url_filepath = os.path.join(path, url_file)
             for url in open(url_filepath).readlines():
+                urlopen(url, timeout=TIMEOUT)
                 try:
+                    print(url) #FIXME
                     status = (urlopen(url, timeout=TIMEOUT).getcode())
                 except:
                     status = 'Not great'

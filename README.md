@@ -1,3 +1,9 @@
+#FIXME
+
+SSL in chroot breaks because it wants to verify the certs. You can disable verification (which you may not want for this usage normally, but is worth considering).
+
+We have to chroot in the app to do  this cleanly. It *mostly* works. Dunno if chdir / is needed after or not.
+
 # andandand
 
 Python wsgi application that serves configured endpoints and does healthchecks on them, and returns appropriately.
@@ -30,8 +36,6 @@ uwsgi --chdir2 example-configuration/ --http :8000 --wsgi-file andandand/wsgi.py
 ```
 
 And hit the endpoints at: `http://localhost:8000/healthcheck/(endpoint,otherendpoint)`
-
-*Ideally, use chroot insead of chdir2 if you are root.*
 
 ## Nifty features
 
