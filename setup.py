@@ -3,7 +3,7 @@
 from setuptools import setup
 from subprocess import check_output
 
-version = check_output(['git', 'describe', '--tags']).strip('\n')
+version = 0.0.3
 
 url = 'https://github.com/matterport/andandand'
 
@@ -16,6 +16,7 @@ setup(
     keywords=['http', 'health'],
     license='Unlicense',
     url=url,
+    download_url=url + '/tarball/' + version
     packages=['andandand'],
     setup_requires=[
         'flake8'
