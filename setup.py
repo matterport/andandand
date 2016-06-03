@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 
 from setuptools import setup
-from subprocess import check_output
 
-version = '0.0.4'
+version = '0.0.5'
 
 url = 'https://github.com/matterport/andandand'
 
@@ -16,7 +15,7 @@ setup(
     keywords=['http', 'health'],
     license='Unlicense',
     url=url,
-    download_url=url + '/tarball/' + version
+    download_url=url + '/tarball/' + version,
     packages=['andandand'],
     setup_requires=[
         'flake8'
