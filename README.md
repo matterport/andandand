@@ -26,8 +26,10 @@ Setup your configuraion like this:
 Run andandand with uwsgi:
 
 ```
-uwsgi --chdir2 example-configuration/ --http :8000 --wsgi-file wsgi.py --processes 4 --threads 2
+uwsgi --chdir2 example-configuration/ --http :8000 --wsgi-file andandand/wsgi.py --processes 4 --threads 2
 ```
+
+And hit the endpoints at: `http://localhost:8000/healthcheck/(endpoint,otherendpoint)`
 
 *Ideally, use chroot insead of chdir2 if you are root.*
 
