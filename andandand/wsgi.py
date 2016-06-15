@@ -41,9 +41,9 @@ def application(env, start_response):
                     status = (urlopen(url, timeout=TIMEOUT).getcode())
                 except:
                     status = 'Not great'
-            if status != 200:
-                notawesome()
-                return ''
+                if status != 200:
+                    notawesome()
+                    return ''
         awesome()
     else:
         notawesome()

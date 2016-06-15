@@ -2,7 +2,7 @@
 
 from setuptools import setup
 
-version = '0.0.5'
+version = '0.0.6'
 
 url = 'https://github.com/matterport/andandand'
 
